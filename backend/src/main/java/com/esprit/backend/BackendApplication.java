@@ -7,6 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 
 @EnableScheduling
@@ -21,4 +22,10 @@ public class BackendApplication {
 		SpringApplication.run(BackendApplication.class, args);
 	}
 
+	public void addCorsMappings(CorsRegistry registry) {
+		registry.addMapping("/api/**") // Spécifiez le chemin de votre API
+				.allowedOrigins("http://localhost:4200") // Autorisez les requêtes depuis ce domaine
+				.allowedMethods("GET", "POST", "PUT", "DELETE") // Autorisez les méthodes HTTP spécifiées
+				.allowCredentials(true); // Autorisez l'envoi des cookies
+	}
 }
