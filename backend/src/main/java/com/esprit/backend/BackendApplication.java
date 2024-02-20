@@ -12,7 +12,13 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 @EnableScheduling
 @SpringBootApplication
-@ComponentScan(basePackages ={"com.esprit.backend.Controllers","com.esprit.backend.Services"})
+@ComponentScan(basePackages ={
+		"com.esprit.backend.Controllers",
+		"com.esprit.backend.Services",
+		"com.esprit.backend.Repository",
+		"com.esprit.backend.auth",
+		"com.esprit.backend.Configuration"
+})
 @EnableJpaRepositories(basePackages = {"com.esprit.backend.Repository"})
 @EntityScan(basePackages = {"com.esprit.backend.Entity"})
 @EnableAspectJAutoProxy
