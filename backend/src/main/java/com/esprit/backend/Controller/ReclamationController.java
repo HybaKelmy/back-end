@@ -17,15 +17,8 @@ public class ReclamationController {
     ReclamationService serviceReclamation;
     @PostMapping("/add")
     public Reclamation ajouterReclamation(@RequestBody Reclamation reclamation){
-        User user = reclamation.getUser();
-        reclamation.setUserLastname(user.getLastname());
-        reclamation.setUserFirstname(user.getFirstname());
-        reclamation.setUserEmail(user.getEmail());
-        reclamation.setStatutReclamation(StatutReclamation.EN_ATTENTE); // Définir le statut à EN_ATTENTE
-        reclamation.setDateCreation(new Date());
         return serviceReclamation.ajouterReclamation(reclamation);
     }
-
 
     @GetMapping("/consultrec")
     public List<Reclamation> getAllReclamation() {
@@ -33,8 +26,4 @@ public class ReclamationController {
         return reclamation;
     }
 
-    @GetMapping("/status")
-    public List<Reclamation> getRecByStatus(@RequestParam boolean status) {
-        return serviceReclamation.getRecByStatus(status);
-    }
 }

@@ -7,11 +7,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
-<<<<<<< HEAD
-=======
+
 import java.util.Collection;
->>>>>>> 31ee5a0984642deb5cb7dac28098db210e379318
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
@@ -24,27 +23,19 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue
     private Long id;
-<<<<<<< HEAD
-    private  String firstname;
-    private String lastname;
-
-=======
     private String firstname;
     private String lastname;
->>>>>>> 31ee5a0984642deb5cb7dac28098db210e379318
     private String studentClass;
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
 
-<<<<<<< HEAD
-    @OneToMany(mappedBy="User",
-            cascade={CascadeType.PERSIST, CascadeType.REMOVE},
-            fetch=FetchType.EAGER)
-    private List<Reclamation> reclamation;
 
-=======
+    @OneToMany(mappedBy="user",cascade={CascadeType.ALL})
+    private Set<Reclamation> reclamation;
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
@@ -79,5 +70,4 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
->>>>>>> 31ee5a0984642deb5cb7dac28098db210e379318
 }

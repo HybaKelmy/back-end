@@ -8,6 +8,4 @@ public interface IReclamationService {
     Reclamation ajouterReclamation(Reclamation reclamation);
 
     List<Reclamation> getAllReclamation();
-
-    List<Reclamation> getRecByStatus(boolean status);
 }
